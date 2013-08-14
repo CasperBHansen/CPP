@@ -20,19 +20,11 @@
 
 int main(int argc, char * argv[]) {
 
-	// simple tests, to see that it chooses the correct formula
-	PassFail * p1 = new PassFail(std::cin);
-	PassFail * p2 = new PassFail(std::cin);
-	
-	// enter one with homework
-	double g1 = p1->grade();
-	std::cout << "Grade: " << g1 << std::endl;
-	
-	// enter one without homework
-	double g2 = p2->grade();
-	std::cout << "Grade: " << g2 << std::endl;
-
-	delete p1, p2;
+	// simple test, to see that it chooses the correct formula
+	PassFail * p = new PassFail(std::cin);
+	double grade = p->grade();
+	std::cout << "Grade: " << grade << std::endl;
+	delete p;
 	
 	return 0;
 }

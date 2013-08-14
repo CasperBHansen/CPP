@@ -24,8 +24,13 @@ std::istream& read_hw(std::istream& in, std::vector<double>& hw);
 
 istream& PassFail::read(istream& in)
 {
+	std::cout << "Enter student name, midterm and final exam grades:" << std::endl;
 	read_common(in);
+	
+	std::cout << "Enter thesis: ";
 	in >> thesis;
+	
+	std::cout << "Enter homework (followed by and eof-delimiter):" << std::endl;
 	read_hw(in, homework);
 	return in;
 }
@@ -36,6 +41,7 @@ double PassFail::grade() const
 		// attempt the normal calculation
 		return std::min(Core::grade(), thesis);
 	}
+	// this should be triggered if the homework vector is empty
 	catch(std::domain_error& e) {
 		// if no homework is done, take the average of
 		// midterm and final exams
