@@ -10,7 +10,7 @@ Compile with GCC and run it with the command:
 ```
 g++ <chapter>-<exercise>.cpp -o <chapter>-<exercise> && ./<chapter>-<exercise>
 ```
-
+Or, in some cases you may need to run a `make <chapter>-<exercise>` command instead.
 
 # Course Outline
 
