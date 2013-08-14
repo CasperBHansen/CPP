@@ -15,6 +15,7 @@ public:
 	std::istream& read(std::istream&);
 
 	double grade() const;    // as defined in 9.2.1/158
+	bool passed() const;
 
 	static bool cmp_by_name(const Student_info&, const Student_info&);
 	static bool cmp_by_grade(const Student_info&, const Student_info&);

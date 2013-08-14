@@ -44,8 +44,14 @@ int main()
 	Grade g = Grade();
 
 	g.read(cin);
+	
+	// for 9-5
+	std::cout << "Report by name (exercise 9-5):" << std::endl;
 	g.report(Student_info::cmp_by_name);
-
+	
+	// for exercise 9-6
+	std::cout << "Report by grade (exercise 9-6):" << std::endl;
+	g.report(Student_info::cmp_by_grade);
 	return 0;
 }
 

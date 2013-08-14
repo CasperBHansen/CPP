@@ -6,6 +6,7 @@
 #include <iomanip>
 #include <string>
 #include <vector>
+#include <stdexcept>
 
 #include "Student_info.h"
 
@@ -33,7 +34,11 @@ public:
 				double final_grade = students[i].grade();   // changed
 				std::streamsize prec = std::cout.precision();
 				std::cout << std::setprecision(3) << final_grade
-				     << std::setprecision(prec) << std::endl;
+				     << std::setprecision(prec);
+				if ( students[i].passed() )
+					std::cout << " (P)" << std::endl;
+				else
+					std::cout << " (F)" << std::endl;
 			} catch (std::domain_error e) {
 				std::cout << e.what() << std::endl;
 			}

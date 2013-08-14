@@ -12,6 +12,11 @@ double Student_info::grade() const
 	return ::grade(midterm, final, homework);
 }
 
+bool Student_info::passed() const
+{
+	return (this->grade() >= 60);
+}
+
 bool Student_info::cmp_by_name(const Student_info& x, const Student_info& y)
 {
 	return x.name() < y.name();
@@ -19,7 +24,7 @@ bool Student_info::cmp_by_name(const Student_info& x, const Student_info& y)
 
 bool Student_info::cmp_by_grade(const Student_info& x, const Student_info& y)
 {
-	return x.grade() < y.grade();
+	return x.grade() > y.grade();
 }
 
 Student_info::Student_info(): midterm(0), final(0) { }
