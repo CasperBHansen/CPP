@@ -13,8 +13,13 @@
  */
 
 #include <iostream>
+#include <stdexcept>
+
+#include "Core.h"
 
 int main(int argc, char * argv[]) {
+
+	std::cout << "13-6" << std::endl;
 	
 	return 0;
 }
