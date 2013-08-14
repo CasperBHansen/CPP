@@ -11,12 +11,37 @@
  * s1.grade(); s1.name();
  * s2.name(); s2.grade();
  * 
- * Check whether you are correct by adding output statements to the name and grade functions that indicate which function is being executed.
+ * Check whether you are correct by adding output statements to the
+ * name and grade functions that indicate which function is being
+ * executed.
  */
 
 #include <iostream>
 
+#include "Core.h"
+
 int main(int argc, char * argv[]) {
+
+	Core* p1 = new Core;
+	Core* p2 = new Grad;
+	Core s1;
+	Grad s2;
 	
+	p1->grade();	// Core::grade();
+	/*
+	p1->name();		// Core::grade();
+	
+	p2->grade();	// Grad::grade();
+	p2->name();		// Grad::grade();
+	
+	s1.grade();		// Core::grade();
+	s1.name();		// Core::grade();
+	
+	s2.name();		// Grad::grade();
+	s2.grade();		// Grad::grade();
+	*/
+
+	delete p1, p2;
+
 	return 0;
 }
