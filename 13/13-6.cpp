@@ -16,10 +16,12 @@
 #include <stdexcept>
 
 #include "Core.h"
+#include "PassFail.h"
 
 int main(int argc, char * argv[]) {
 
-	std::cout << "13-6" << std::endl;
+	PassFail * p = new PassFail(std::cin);
+	delete p;
 	
 	return 0;
 }

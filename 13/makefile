@@ -7,6 +7,8 @@ Core.o:	Core.cc Core.h
 
 Grad.o:	Grad.cc Core.h
 
+PassFail.o:	PassFail.cpp PassFail.h
+
 Student_info.o:	Student_info.cc median.h Student_info.h Core.h
 
 grade.o:	grade.cc median.h Student_info.h
@@ -31,11 +33,11 @@ main_core_ptrs:	main_core_ptrs.o grade.o  read_hw.o Core.o
 
 13-2.o:	13-2.cpp Core.h median.h
 
-13-6.o:	13-2.cpp Core.h median.h
+13-6.o:	13-2.cpp Core.h PassFail.h median.h
 
-13-2:	Core.o grade.o read_hw.o
+13-2:	13-2.o Core.o grade.o read_hw.o
 
-13-6:	Core.o grade.o read_hw.o
+13-6:	13-6.o read_hw.o grade.o Core.o PassFail.o
 
 test:		all
 	./main_core <../data/grades_core

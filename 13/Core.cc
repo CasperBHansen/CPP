@@ -1,6 +1,3 @@
-#include <iostream>
-using namespace std;
-
 #include <algorithm>
 
 #ifdef _MSC_VER
@@ -21,7 +18,6 @@ string Core::name() const { return n; }
 
 double Core::grade() const
 {
-	//cout << "CORE" << endl;
 	return ::grade(midterm, final, homework);
 }
 

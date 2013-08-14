@@ -15,7 +15,7 @@ public:
 
 	// as defined in 13.1.2/230
 	virtual std::istream& read(std::istream&);
-	virtual double grade() const;
+	virtual double grade() const;	// NOTE: I would make this pure
 
 	virtual ~Core() { }
 
