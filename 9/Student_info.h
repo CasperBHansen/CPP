@@ -15,13 +15,17 @@ public:
 	std::istream& read(std::istream&);
 
 	double grade() const;    // as defined in 9.2.1/158
+
+	static bool cmp_by_name(const Student_info&, const Student_info&);
+	static bool cmp_by_grade(const Student_info&, const Student_info&);
+
 private:
 	std::string n;
 	double midterm, final;
 	std::vector<double> homework;
 };
 
-bool compare(const Student_info&, const Student_info&);
+// bool compare(const Student_info&, const Student_info&);
 
 #endif
 

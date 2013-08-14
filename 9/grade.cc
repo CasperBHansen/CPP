@@ -1,3 +1,6 @@
+#include <algorithm>
+using std::max;
+
 #include <vector>
 #include <stdexcept>
 
@@ -7,12 +10,26 @@ using std::vector;
 #include "grade.h"
 #include "median.h"
 
+using std::istream;
+using std::cout;
+using std::cin;
+using std::endl;
+using std::string;
+
 Grade::Grade() {
 	maxlen = 0;
 }
 
 Grade::~Grade() {
 	// ..
+}
+
+istream& Grade::read(istream& in) {
+	Student_info record;
+	while ( record.read(in) ) {
+		maxlen = max(maxlen, record.name().size());
+		students.push_back( record );
+	}
 }
 
 // compute a student's overall grade from midterm and final exam grades and homework grade
