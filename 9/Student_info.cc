@@ -25,6 +25,8 @@ Student_info::Student_info(istream& is) { read(is); }
 istream& read_hw(istream& in, vector<double>& hw)
 {
 	if (in) {
+		
+		std::cout << "Enter homework grades:" << std::endl;
 		// get rid of previous contents
 		hw.clear();
 
@@ -41,6 +43,7 @@ istream& read_hw(istream& in, vector<double>& hw)
 
 istream& Student_info::read(istream& in)
 {
+	std::cout << "Enter student name, midterm and final grades:" << std:: endl;
 	in >> n >> midterm >> final;
 	read_hw(in, homework);
 	return in;
