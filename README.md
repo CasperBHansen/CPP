@@ -1,7 +1,7 @@
 C++
 ===
 
-A repository for the C++ course at The University of Copenhagen.
+A repository for the one-week intensive C++ course at The University of Copenhagen.
 
 
 # Instructions
