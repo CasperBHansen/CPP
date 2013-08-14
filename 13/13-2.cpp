@@ -17,6 +17,7 @@
  */
 
 #include <iostream>
+#include <stdexcept>
 
 #include "Core.h"
 
@@ -27,20 +28,27 @@ int main(int argc, char * argv[]) {
 	Core s1;
 	Grad s2;
 	
-	p1->grade();	// Core::grade();
-	/*
-	p1->name();		// Core::grade();
+	// note to book: remember to catch exceptions,
+	// otherwise it will not let you run it on strict
+	// implementations of GCC.
+	try {
+		p1->grade();	// Core::grade();
+		p1->name();		// Core::grade();
+		
+		p2->grade();	// Grad::grade();
+		p2->name();		// Core::grade();
+		
+		s1.grade();		// Core::grade();
+		s1.name();		// Core::grade();
+		
+		s2.name();		// Core::grade();
+		s2.grade();		// Grad::grade();
+	}
+	catch (std::exception& e) {
+		std::cerr << e.what() << std::endl;
+	}
 	
-	p2->grade();	// Grad::grade();
-	p2->name();		// Grad::grade();
-	
-	s1.grade();		// Core::grade();
-	s1.name();		// Core::grade();
-	
-	s2.name();		// Grad::grade();
-	s2.grade();		// Grad::grade();
-	*/
-
+	// err.. another note to the book, please don't leak my memory?
 	delete p1, p2;
 
 	return 0;
