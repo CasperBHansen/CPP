@@ -7,7 +7,9 @@ A repository for the one-week intensive C++ course at The University of Copenhag
 # Instructions
 
 Compile with GCC and run it with the command:
+```
 g++ <chapter>-<exercise>.cpp -o <chapter>-<exercise> && ./<chapter>-<exercise>
+```
 
 
 # Course Outline
