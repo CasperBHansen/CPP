@@ -22,7 +22,7 @@ using std::cout;
 using std::endl;
 
 template<class S, class T>
-S& find(S& b, S& e, T t) {
+S _find(S b, S e, T t) {
 	while(b != e && (* b) != t) { b++; }
 	return b;
 }
@@ -30,7 +30,7 @@ S& find(S& b, S& e, T t) {
 template <class S, class T>
 void test_find(const T& source, S t, bool expected)
 {
-	S result = (* find(source.begin(), source.end(), t));
+	S result = (* _find(source.begin(), source.end(), t));
 	assert( (result == t) == expected );
 }
 

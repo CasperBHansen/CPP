@@ -22,24 +22,33 @@ using std::cout;
 using std::endl;
 
 template<class T>
-T& search(T& b, T& e, T& b2, T& e2) {
-	while (b != e) {
-		while ( (* b2) != (* b) && b2 != e2 )
-			if ( equal(b, e, b2) ) return b;
+T _search(T b, T e, T b2, T e2) {
+	while( b != e ) {
+		if ( equal(b, e, b2) ) return b;
+		b++;
 	}
-
-	return b;
+	return b2;
 }
 
-template <class T>
-void test_search(const T& source, const T& dest)
+template <class S, class T>
+void test_search(T source, T dest, S expected, bool eval)
 {
-	search(source.begin(), source.end(), dest.begin(), dest.end());
+	S result = _search(source.begin(), source.end(), dest.begin(), dest.end());
+	int len = dest.end() - dest.begin();
+	assert( _equal(result, result+len, expected) == eval );
 }
 
 void search_tests() {
 	cout << "Testing search(b, e, b1, b2):\t";
-	test_search( make_range(0, 10), make_range(0, 10) );
+	
+	c_type a = make_range(0, 10);
+	c_type b = make_range(2, 8);
+	c_type c = make_range(4, 6);
+	
+	test_search( a, b, b.begin(), true );
+	test_search( b, c, c.begin(), true );
+	test_search( c, a, c.begin(), false );
+	
 	cout << "Passed!" << endl;
 }
 

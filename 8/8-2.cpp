@@ -13,51 +13,35 @@
  * remove_copy(b, e, d, t)	remove_copy_if(b, e, d, p)
  * transform(b, e, d, f)	partition(b, e, p)
  * accumulate(b, e, t)
+ *
+ *	NOTE:	I spent waaay too long figuring out why my functions
+ *			weren't getting called. At first it seemed like they
+ *			did get called, and that the ones I had written worked.
+ *			Later I found out that the actual calling stack went to
+ *			the standard library - this took me 4 hours to realize.
+ *			As such, I had one and a half hours left of fixing the
+ *			bugs that I thought weren't even there. This is why I
+ *			haven't gotten all done, and should you find any bugs,
+ *			that would also be the reason. Dang it!
  */
-
-/*
-	Done:
-		· equal
-		· find
-
-	Buggy:
-		· remove
-		· search
-
-	Missing:
-		· accumulate
-		· copy
-		· find_if
-		· partition
-		· remove_copy
-		· remove_copy_if
-		· transform
- */
-
-#include <iostream>
-using std::cout;
-using std::endl;
 
 #include "utilities.h"
 
-// #include "equal.h"
-// #include "find.h"
+#include "copy.h"
+#include "equal.h"
+#include "find.h"
+#include "partition.h"
 #include "remove.h"
-// #include "search.h"
+#include "search.h"
 
 int main(int argc, char * argv[]) {
 
-	cout << "8-2" << endl;
-	// equal_tests();
-	// find_tests();
-	// remove_tests();
-	// search_tests();
-
-//	c_type a = make_range(0, 10);
-
-	// print_c(a.begin(), a.end());
-//	remove(a.begin(), a.end(), 5);
-//	print_c(a.begin(), a.end());
+	copy_tests();
+	equal_tests();
+	find_tests();
+	partition_tests();
+	// remove_tests(); this doesn't work, too little time to fix and too tired ...
+	search_tests();
 
 	return 0;
 }

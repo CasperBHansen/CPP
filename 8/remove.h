@@ -16,8 +16,8 @@
 
 #include "utilities.h"
 
-//#include "equal.h"
-//#include "find.h"
+#include "equal.h"
+#include "copy.h"
 
 #include <assert.h>
 #include <stdexcept>
@@ -25,13 +25,19 @@
 using std::cout;
 using std::endl;
 
+template<class S, class T>
+S _remove(S b, S e, T t) {
+	while(b != e && (* b) != t) { b++; }
+	copy(b+1, e, b);
+	return --e;
+}
 
-/*
 template <class S, class T>
 void test_remove(T source, S t, T expected)
 {
-	T result = remove(source.begin(), source.end(), t);
-	equal(result.begin(), result.end(), expected.begin());
+	_remove(source.begin(), source.end(), t);
+	print_c(source.begin(), source.end());
+	equal(source.begin(), source.end(), expected.begin());
 }
 
 void remove_tests() {
@@ -39,6 +45,6 @@ void remove_tests() {
 	test_remove( make_range(0, 10), 0, make_range(1, 10));
 	test_remove( make_range(0, 10), 9, make_range(0, 9));
 	cout << "Passed!" << endl;
-}*/
+}
 
 #endif // REMOVE_H

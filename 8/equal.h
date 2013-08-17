@@ -23,15 +23,15 @@ using std::cout;
 using std::endl;
 
 template<class T>
-bool equal(T& b, T& e, T& d) {
-	while ( b != e && (* b) == (* d) ) { b++; d++; }
-	return (* b) == (* d);
+bool _equal(T b, T e, T d) {
+	while ( b != e ) if ( (* b++) != (* d++) ) return false;
+	return true;
 }
 
 template <class T>
 void test_equal(const T& source, const T& dest, bool expected)
 {
-	return assert( equal(source.begin(), source.end(), dest.begin()) == expected );
+	return assert( _equal(source.begin(), source.end(), dest.begin()) == expected );
 }
 
 void equal_tests() {
