@@ -1,73 +1,43 @@
 /*
  * Shape.cpp
+ *
+ * Defines the base Shape class.
  */
 
 #include "Shape.h"
 
-using std::ostream;
 using std::string;
 
 std::ostream& operator<<(std::ostream& os, const Shape& shape)
 {
-	return os << shape.getColor() << " shape at (" << shape.getX() << "," << shape.getY() << ")";
+	return os << shape.getType() << " at " << shape.boundingLowerLeft() << " to " << shape.boundingUpperRight();
 }
 
-Shape::Shape()
+Shape::Shape(const Color<ColorType>& initialColor,
+			 const Coordinate<CoordType>& initialPosition)
 {
-	// make sure we don't have garbage values
-	coordinates.x = 0;
-	coordinates.y = 0;
-
-	color = string("");
+	type = string("Shape");
+	color = initialColor;
+	position = initialPosition;
+	center = position;
 }
 
-string Shape::getColor() const
+Coordinate<CoordType> Shape::getPosition() const
+{
+	return position;
+}
+
+Color<ColorType> Shape::getColor() const
 {
 	return color;
 }
 
-void Shape::setColor(const char * c_string)
+void Shape::setColor(const Color<ColorType>& c)
 {
-	color = string(c_string);
+	color = c;
 }
 
-void Shape::setColor(string str)
+string Shape::getType() const
 {
-	color = str;
+	return type;
 }
-
-int Shape::getX() const
-{
-	return coordinates.x;
-}
-
-int Shape::getY() const
-{
-	return coordinates.y;
-}
-
-void Shape::getCoordinates(Coordinate<int>& coord) const {
-	coord.x = coordinates.x;
-	coord.y = coordinates.y;
-}
-
-/*
-
-double Circle::area()
-{
-	return 0;
-}
-
-Coordinate Circle::boundingLowerLeft()
-{
-	Coordinate tmp;
-	return tmp;
-}
-
-Coordinate Circle::boundingUpperRight()
-{
-	Coordinate tmp;
-	return tmp;
-}
-
-*/

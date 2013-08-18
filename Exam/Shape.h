@@ -7,37 +7,42 @@
 #ifndef SHAPE_H
 #define SHAPE_H
 
-#define MATH_PI 3.1415
-
+#include <cstdint>	// requires the -std=c++11 flag
 #include <iostream>
 #include <string>
 
-// might want to change these to doubles, or something ..
-template <class T>
-struct Coordinate {
-	T x, y;
-};
+#include "Coordinate.h"
+#include "Color.h"
 
+typedef float CoordType;
+typedef int ColorType;
+
+// template <class CoordType, class ColorType>
 class Shape {
 public:
-	Shape();
-
-	virtual double area() = 0;
-	virtual Coordinate<int> boundingLowerLeft() = 0;
-	virtual Coordinate<int> boundingUpperRight() = 0;
-
-	std::string getColor() const;
-	void setColor(const char * c_string);
-	void setColor(std::string str);
-
-	int getX() const;
-	int getY() const;
-
-	void getCoordinates(Coordinate<int>& coord) const;
+	Shape(const Color<ColorType>& initialColor = Color<ColorType>(),
+		  const Coordinate<CoordType>& initialPosition = Coordinate<CoordType>());
+	
+	virtual std::string getType() const;
+	
+	virtual double area() const = 0;
+	
+	Coordinate<CoordType> getPosition() const;
+	virtual Coordinate<CoordType> getCenter() const = 0;
+	virtual Coordinate<CoordType> boundingLowerLeft() const = 0;
+	virtual Coordinate<CoordType> boundingUpperRight() const = 0;
+	
+	Color<ColorType> getColor() const;
+	void setColor(const Color<ColorType>& c);
+	
+protected:
+	std::string type;
+	
+	Coordinate<CoordType> position;
+	Coordinate<CoordType> center;
 
 private:
-	Coordinate<int> coordinates;
-	std::string color;
+	Color<ColorType> color;
 };
 
 std::ostream& operator<<(std::ostream& os, const Shape& shape);

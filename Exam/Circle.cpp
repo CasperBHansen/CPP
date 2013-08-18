@@ -1,22 +1,45 @@
 /*
  * Circle.cpp
+ *
+ * Defines the Circle class.
  */
 
 #include "Circle.h"
 
-double Circle::area()
+#include <string>
+using std::string;
+
+#include <math.h>
+
+#include "math.h"
+
+Circle::Circle(const Color<ColorType>& initialColor,
+			   const Coordinate<CoordType>& position,
+			   const float r)
+			   : Shape(initialColor, position)
 {
-	return 0;
+	type = string("Circle");
+	
+	radius = r;
 }
 
-Coordinate<int> Circle::boundingLowerLeft()
+double Circle::area() const
 {
-	Coordinate<int> tmp;
-	return tmp;
+	return M_PI * radius * radius;
 }
 
-Coordinate<int> Circle::boundingUpperRight()
+Coordinate<CoordType> Circle::getCenter() const
 {
-	Coordinate<int> tmp;
-	return tmp;
+	return position;
 }
+
+Coordinate<CoordType> Circle::boundingLowerLeft() const
+{
+	return Coordinate<CoordType>(center.x - radius, center.y - radius) + position;
+}
+
+Coordinate<CoordType> Circle::boundingUpperRight() const
+{
+	return Coordinate<CoordType>(center.x + radius, center.y + radius) + position;
+}
+
