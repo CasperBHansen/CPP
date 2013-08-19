@@ -16,6 +16,11 @@
 #define MATH_PI 3.1415
 
 template <class T>
+T abs(T n) {
+	return (n < 0) ? -n : n;
+}
+
+template <class T>
 T min(T a, T b) {
 	return (a < b) ? a : b;
 }
@@ -25,39 +30,40 @@ T max(T a, T b) {
 	return (a > b) ? a : b;
 }
 
-// overload the == operator on Shape instead
 template <class S, class T>
 bool areaCompare(const S& a, const T& b) {
 	#ifdef DEBUG
 	if (a.area() < b.area())
-		std::cout << "a's area is less than b's area." << std::endl;
+		std::cout << "a (" << a.area() << ") < b (" << b.area() << ")" << std::endl;
 	else
-		std::cout << "a's area is greater than or equal to b's area." << std::endl;
+		std::cout << "a (" << a.area() << ") >= b (" << b.area() << ")" << std::endl;
 	#endif
 	return a.area() < b.area();
 }
 
 template <class S, class T>
 bool intersect(const S& a, const T& b) {
-	if (
-		( a.boundingLowerLeft().x >= b.boundingLowerLeft().x &&
-		  a.boundingLowerLeft().x <= b.boundingUpperRight().x &&
-		  a.boundingLowerLeft().y >= b.boundingLowerLeft().y &&
-		  a.boundingLowerLeft().y <= b.boundingUpperRight().y ) ||
-		( a.boundingUpperRight().x >= b.boundingLowerLeft().x &&
-		  a.boundingUpperRight().x <= b.boundingUpperRight().x &&
-		  a.boundingUpperRight().y >= b.boundingLowerLeft().y &&
-		  a.boundingUpperRight().y <= b.boundingUpperRight().y
-		)
-	)
+	if (abs( a.getCenter().x - b.getCenter().x ) * 2 < ( (a.boundingUpperRight().x - a.boundingLowerLeft().x) + (b.boundingUpperRight().x - b.boundingLowerLeft().x) ) &&
+		abs( a.getCenter().y - b.getCenter().y ) * 2 < ( (a.boundingUpperRight().y - a.boundingLowerLeft().y) + (b.boundingUpperRight().y - b.boundingLowerLeft().y) ) ) {
+		#ifdef DEBUG
+		std::cout << "a (" << a.getType() << ") and b (" << b.getType() << ") intersects." << std::endl;
+		#endif
 		return true;
+	}
+	#ifdef DEBUG
+	std::cout << "a (" << a.getType() << ") and b (" << b.getType() << ") do not intersect." << std::endl;
+	#endif
 	return false;
 }
 
 template <class S, class T>
-bool intersectByColor(const S& a, const T& b, const Color<ColorType>& color) {
-	if ( !(a.getColor() == b.getColor()) )
+bool intersectByColor(const S& a, const T& b) {
+	if ( !(a.getColor() == b.getColor()) ) {
+		#ifdef DEBUG
+		std::cout << "a (" << a.getType() << ") and b (" << b.getType() << ") colors do not match." << std::endl;
+		#endif
 		return false;
+	}
 	else
 		return intersect(a, b);
 }

@@ -18,6 +18,8 @@ struct Color {
 	}
 };
 
+const Color<COLOR_TYPE> red(255, 0, 0), green(0, 255, 0), blue(0, 0, 255);
+
 template <class T>
 std::ostream& operator<<(std::ostream& os, const Color<T>& color)
 {

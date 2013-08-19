@@ -17,6 +17,8 @@ struct Coordinate {
 	};
 };
 
+const Coordinate<COORD_TYPE> origo(0.0, 0.0);
+
 template <class T>
 std::ostream& operator<<(std::ostream& os, const Coordinate<T>& coord)
 {

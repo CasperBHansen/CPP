@@ -1,7 +1,7 @@
 CXX=g++
-CFLAGS=-std=c++11 -c -Wall
+CFLAGS=-c -Wall
 LDFLAGS=
-SOURCES=main.cpp Shape.cpp Line.cpp Circle.cpp Triangle.cpp
+SOURCES=main.cpp# Shape.cpp Line.cpp Circle.cpp Triangle.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=Shapes
 
